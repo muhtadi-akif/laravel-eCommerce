@@ -6,24 +6,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>aranoz</title>
-    <link rel="icon" href="img/favicon.png">
+    <link rel="icon" href="{{asset('img/favicon.png')}}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <!-- animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="{{asset('css/animate.css')}}">
     <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href={{asset('css/owl.carousel.min.css')}}>
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href={{asset('css/all.css')}}>
     <!-- flaticon CSS -->
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href={{asset('css/flaticon.css')}}>
+    <link rel="stylesheet" href={{asset('css/themify-icons.css')}}>
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href={{asset('css/magnific-popup.css')}}>
     <!-- swiper CSS -->
-    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href={{asset('css/slick.css')}}>
     <!-- style CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href={{asset('css/style.css')}}>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="/"> <img src="img/logo.png" alt="logo"> </a>
+                        <a class="navbar-brand" href="/"> <img src="{{asset('img/logo.png')}}" alt="logo"> </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -79,8 +79,6 @@
                             </ul>
                         </div>
                         <div class="hearer_icon d-flex">
-                            <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <a href=""><i class="ti-heart"></i></a>
                             <div class="dropdown cart">
                                 <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

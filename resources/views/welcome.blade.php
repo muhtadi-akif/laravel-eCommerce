@@ -70,7 +70,7 @@
                                 <div class="single_product_text">
                                     <h4>{{$product->title}}</h4>
                                     <h3>¥{{$product->price}}</h3>
-                                    <a href="#" class="add_cart">+ add to cart</a>
+                                    <a href="/products/{{$product->id}}" class="add_cart">View the product</a>
                                 </div>
                             </div>
                         </div>
