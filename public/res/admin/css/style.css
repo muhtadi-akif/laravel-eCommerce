@@ -1,0 +1,22 @@
+.content_padding{
+    padding: 10px;
+}
+
+.table_data_center{
+    text-align: center;
+}
+
+.content_heading_center{
+    text-align: center;
+}
+
+.content_center_card{
+    width: 50%;
+    margin-left:25%;
+}
+
+.content_center_product_card{
+    width: 75%;
+    margin-left:12.5%;
+    margin-right:12.5%;
+}
