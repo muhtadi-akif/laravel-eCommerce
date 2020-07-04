@@ -122,8 +122,7 @@ class CustomerController extends Controller
         if (!$user) {
             return Redirect::back()->withErrors('Wrong username or password')->withInput($request->input());
         } else {
-            $customer = Customer::where('user_id', $user->id)->first();
-            Session::put(User::SESSION_CUSTOMER_LOGIN, $customer);
+            Session::put(User::SESSION_CUSTOMER_LOGIN, $user->customer);
             return Redirect::to('/');
         }
     }

@@ -82,7 +82,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        $customer->delete();
+        $customer->user->delete();
         return Redirect::to('admin/customers');
     }
 }

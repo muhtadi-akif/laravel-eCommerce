@@ -24,6 +24,8 @@
     <link rel="stylesheet" href={{asset('css/slick.css')}}>
     <!-- style CSS -->
     <link rel="stylesheet" href={{asset('css/style.css')}}>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{asset('res/admin/plugins/toastr/toastr.min.css')}}">
 </head>
 
 <body>
@@ -74,8 +76,8 @@
                             <li class="nav-item">
                                 @if(\Illuminate\Support\Facades\Session::has(constant('App\User::SESSION_CUSTOMER_LOGIN')))
                                     <a class="nav-link"
-                                       href="/customers/{{Session::get(constant('App\User::SESSION_ADMIN_LOGIN'))->id}}">
-                                        {{Session::get(constant('App\User::SESSION_ADMIN_LOGIN'))->name}}
+                                       href="/customers/{{Session::get(constant('App\User::SESSION_CUSTOMER_LOGIN'))->id}}">
+                                        {{Session::get(constant('App\User::SESSION_CUSTOMER_LOGIN'))->name}}
                                     </a>
                                 @else
                                     <a class="nav-link" href="/customers">Login</a>
