@@ -14,12 +14,12 @@
                 <div class="review_item">
                     <div class="media">
                       <div class="d-flex">
-                        <img class="profile_picture" src="https://scontent.fdac21-1.fna.fbcdn.net/v/t1.0-9/64598049_919459518438703_3989188770103558144_n.jpg?_nc_cat=111&_nc_sid=8bfeb9&_nc_eui2=AeGMSpK06HDKXjEvEOjQ_L1vCqVRRKFFKAoKpVFEoUUoCvIifV5ebfXAffy3O9HtlgCOJNP3seHRmRlEjLNNNCrz&_nc_oc=AQkmK5O0l936j9nImaMZmC5MTB-ikO199-vOJ7MlzsvDsrPZ8AXaggqViNcFU9vfbC8&_nc_ht=scontent.fdac21-1.fna&oh=531e349fd384cee471e443d5d74eaf06&oe=5EEFFE36" alt=""/>
+                        <img class="profile_picture" src="{{$customer->image_url}}" alt=""/>
                       </div>
                       <div class="media-body">
-                        <h3>Mehbuba Zabyn</h3>
-                        <h4>zabyn@co-well.jp</h4>
-                        <h4>+8801722130860</h4>
+                        <h3>{{$customer->name}}</h3>
+                        <h4>{{$customer->email}}</h4>
+                        <h4>{{$customer->phone}}</h4>
                         <a class="edit_btn" href="edit">Edit</a>
                       </div>
                     </div>

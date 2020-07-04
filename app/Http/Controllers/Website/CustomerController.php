@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
@@ -75,7 +76,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return view('profile', compact('customer'));
     }
 
     /**
@@ -110,5 +111,20 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+    }
+
+    public function login(Request $request)
+    {
+        $username = $request->input('username');
+        $password = $request->input('password');
+        $user = User::where('username', $username)->where('password', $password)
+            ->where('type', User::TYPE_CUSTOMER)->first();
+        if (!$user) {
+            return Redirect::back()->withErrors('Wrong username or password')->withInput($request->input());
+        } else {
+            $customer = Customer::where('user_id', $user->id)->first();
+            Session::put(User::SESSION_CUSTOMER_LOGIN, $customer);
+            return Redirect::to('/profile');
+        }
     }
 }

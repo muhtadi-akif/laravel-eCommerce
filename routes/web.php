@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Redirect;
 
 Route::get('/', 'Website\ProductController@index');
 Route::resource('products', 'Website\ProductController')->only('show');
+Route::post('/customers/login', 'Website\CustomerController@login');
 Route::resource('customers', 'Website\CustomerController');
 Route::get('profile', function () {
     return view('profile');
