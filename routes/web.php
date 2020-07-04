@@ -21,12 +21,8 @@ Route::resource('products', 'Website\ProductController')->only('show');
 Route::post('/customers/login', 'Website\CustomerController@login');
 Route::get('/customers/logout', 'Website\CustomerController@logout');
 Route::resource('customers', 'Website\CustomerController');
-Route::get('profile', function () {
-    return view('profile');
-});
-Route::get('edit', function () {
-    return view('edit');
-});
+Route::resource('/admin/customers', 'CustomerController');
+
 
 /* routes for admin dashboard */
 Route::get('admin/login', function () {

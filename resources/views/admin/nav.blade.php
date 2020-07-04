@@ -48,7 +48,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="customers" class="nav-link">
+                <a href="/admin/customers" class="nav-link">
                   <p>Customers</p>
                 </a>
               </li>
