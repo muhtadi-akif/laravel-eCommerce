@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         $username = $request->input('username');
         $password =  $request->input('password');
-        $error = $this->adminValidation($username, $password);
+        $error = $this->userValidation($username, $password);
         if ($error) {
             return Redirect::back()->withErrors($error)->withInput($request->input());
         }
@@ -54,7 +54,7 @@ class UserController extends Controller
         return Redirect::to('admin');
     }
 
-    private function adminValidation($username, $password, $id = null)
+    public function userValidation($username, $password, $id = null)
     {
 
         if (!$id) {

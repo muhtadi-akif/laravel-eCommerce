@@ -27,6 +27,23 @@
 <script src={{asset('js/price_rangs.js')}}></script>
 <!-- custom js -->
 <script src={{asset('js/custom.js')}}></script>
+<!-- AdminLTE for demo purposes -->
+
+<script src="{{asset('res/admin/js/demo.js')}}"></script>
+<!-- Toastr -->
+<script src="{{asset('res/admin/plugins/toastr/toastr.min.js')}}"></script>
+<script>
+    @if($errors->any())
+    $(document).ready(function () {
+        toastr.error("{{$errors->first()}}");
+    });
+    @endif
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+</script>
 </body>
 
 </html>

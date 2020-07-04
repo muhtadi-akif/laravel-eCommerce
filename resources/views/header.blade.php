@@ -51,10 +51,10 @@
                                         pages
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                        <a class="dropdown-item" href="login">login</a>
-                                        <a class="dropdown-item" href="profile">profile</a>
-                                        <a class="dropdown-item" href="registration">registration</a>
-                                        <a class="dropdown-item" href="edit">edit</a>
+                                        <a class="dropdown-item" href="/customers">login</a>
+                                        <a class="dropdown-item" href="/profile">profile</a>
+                                        <a class="dropdown-item" href="/customers/create">registration</a>
+                                        <a class="dropdown-item" href="/edit">edit</a>
                                         <a class="dropdown-item" href="tracking.html">tracking</a>
                                         <a class="dropdown-item" href="checkout.html">product checkout</a>
                                         <a class="dropdown-item" href="cart.html">shopping cart</a>
