@@ -124,7 +124,15 @@ class CustomerController extends Controller
         } else {
             $customer = Customer::where('user_id', $user->id)->first();
             Session::put(User::SESSION_CUSTOMER_LOGIN, $customer);
-            return Redirect::to('/profile');
+            return Redirect::to('/');
+        }
+    }
+
+    public function logout()
+    {
+        if (Session::has(User::SESSION_CUSTOMER_LOGIN)) {
+            Session::forget(User::SESSION_CUSTOMER_LOGIN);
+            return Redirect::to('/');
         }
     }
 }
