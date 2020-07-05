@@ -6,13 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function property(){
+    public function property()
+    {
         return $this->hasOne(Property::class);
     }
-    public function brand(){
+
+    public function brand()
+    {
         return $this->belongsTo(Brand::class);
     }
-    public function category(){
+
+    public function category()
+    {
         return $this->belongsTo(Category::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }
