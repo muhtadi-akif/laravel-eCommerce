@@ -108,7 +108,7 @@ class UserController extends Controller
     {
         $username = $request->input('username');
         $password =  $request->input('password');
-        $error = $this->adminValidation($username, $password, $id);
+        $error = $this->userValidation($username, $password, $id);
         if ($error) {
             return Redirect::back()->withErrors($error)->withInput($request->input());
         }
