@@ -21,7 +21,7 @@ Route::resource('products', 'Website\ProductController')->only('show');
 Route::post('/customers/login', 'Website\CustomerController@login');
 Route::get('/customers/logout', 'Website\CustomerController@logout');
 Route::resource('customers', 'Website\CustomerController');
-Route::resource('/admin/customers', 'CustomerController');
+
 
 
 /* routes for admin dashboard */
@@ -39,6 +39,7 @@ Route::middleware('admin_check')->group(function () {
     Route::resource('admin', 'UserController');
     Route::resource('categories', 'CategoryController');
     Route::resource('brands', 'BrandController');
+    Route::resource('/admin/customers', 'CustomerController');
 });
 
 
