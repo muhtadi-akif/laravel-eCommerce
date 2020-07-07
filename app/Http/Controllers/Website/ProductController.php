@@ -31,12 +31,14 @@ class ProductController extends Controller
 //        $activation = Activation::complete($user, '64u3G4Y45JBmwpKDngirfz3IIAH3a95X');
 
         //login through sentinel
-        $credentials = [
-            'email' => 'akif@co-well.jp',
-            'password' => 'Hello1234',
-        ];
+        /*    $credentials = [
+                'email' => 'akif@co-well.jp',
+                'password' => 'Hello1234',
+            ];
 
-        $check = Sentinel::authenticate($credentials);
+            $check = Sentinel::authenticate($credentials);*/
+
+        $check = Sentinel::logout();
 
         return response()->json($check);
 
