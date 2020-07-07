@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\AranozUser;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $admins = User::where('type', User::TYPE_ADMIN)->paginate(5);
+        $admins = AranozUser::where('type', AranozUser::TYPE_ADMIN)->paginate(5);
         return view('admin/list', compact('admins'));
     }
 
@@ -45,10 +45,10 @@ class UserController extends Controller
         if ($error) {
             return Redirect::back()->withErrors($error)->withInput($request->input());
         }
-        $user = new User;
+        $user = new AranozUser;
         $user->username = $username;
         $user->password = $password;
-        $user->type = User::TYPE_ADMIN;
+        $user->type = AranozUser::TYPE_ADMIN;
         $user->save();
 
         return Redirect::to('admin');
@@ -58,9 +58,9 @@ class UserController extends Controller
     {
 
         if (!$id) {
-            $existingUser = User::where('username', $username)->first();
+            $existingUser = AranozUser::where('username', $username)->first();
         } else {
-            $existingUser = User::where('username', $username)
+            $existingUser = AranozUser::where('username', $username)
                 ->where('id', '!=', $id)
                 ->first();
         }
@@ -93,7 +93,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $admin = User::find($id);
+        $admin = AranozUser::find($id);
         return view('admin/edit', compact('admin'));
     }
 
@@ -112,7 +112,7 @@ class UserController extends Controller
         if ($error) {
             return Redirect::back()->withErrors($error)->withInput($request->input());
         }
-        $admin = User::find($id);
+        $admin = AranozUser::find($id);
         $admin->username = $username;
         $admin->password = $password;
         $admin->save();
@@ -127,7 +127,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-       $user = User::find($id);
+       $user = AranozUser::find($id);
        $user->delete();
        return Redirect::to('admin');
     }
@@ -136,19 +136,19 @@ class UserController extends Controller
     {
         $username = $request->input('username');
         $password =  $request->input('password');
-        $user = User::where('username', $username)->where('password', $password)->where('type', User::TYPE_ADMIN)->first();
+        $user = AranozUser::where('username', $username)->where('password', $password)->where('type', AranozUser::TYPE_ADMIN)->first();
         if (!$user) {
             return Redirect::back()->withErrors('Wrong username or password')->withInput($request->input());
         } else {
-            Session::put(User::SESSION_ADMIN_LOGIN, $user);
+            Session::put(AranozUser::SESSION_ADMIN_LOGIN, $user);
             return Redirect::to('dashboard');
         }
     }
 
     public function logout()
     {
-        if (Session::has(User::SESSION_ADMIN_LOGIN)) {
-            Session::forget(User::SESSION_ADMIN_LOGIN);
+        if (Session::has(AranozUser::SESSION_ADMIN_LOGIN)) {
+            Session::forget(AranozUser::SESSION_ADMIN_LOGIN);
             return Redirect::to('/admin/login');
         }
     }

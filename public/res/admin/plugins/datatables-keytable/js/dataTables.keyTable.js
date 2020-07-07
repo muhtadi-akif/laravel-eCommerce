@@ -58,7 +58,7 @@ var KeyTable = function ( dt, opts ) {
 		throw 'KeyTable requires DataTables 1.10.8 or newer';
 	}
 
-	// User and defaults configuration object
+	// AranozUser and defaults configuration object
 	this.c = $.extend( true, {},
 		DataTable.defaults.keyTable,
 		KeyTable.defaults,
@@ -649,7 +649,7 @@ $.extend( KeyTable.prototype, {
 				.rows( { filter: 'applied', order: 'applied' } )
 				.indexes()
 				.indexOf( index.row );
-			
+
 			// Don't focus rows that were filtered out.
 			if ( row < 0 ) {
 				return;

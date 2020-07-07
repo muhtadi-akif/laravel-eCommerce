@@ -20,7 +20,7 @@ class CreateCustomersTable extends Migration
             $table->string('phone')->unique();
             $table->string('image_url');
             $table->enum('gender', ['male', 'female']);
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('aranoz_user_id')->constrained()->cascadeOnDelete();
         });
     }
 
