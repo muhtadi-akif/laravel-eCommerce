@@ -10,19 +10,19 @@
                         <form class="row contact_form" action="/customers" method="post" novalidate="novalidate">
                             {{ csrf_field() }}
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="name" name="username" value=""
-                                       placeholder="Username">
+                                <input type="text" class="form-control" id="name" name="first_name" value="{{ old('first_name') }}"
+                                       placeholder="First Name">
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="name" name="name" value=""
-                                       placeholder="Name">
+                                <input type="text" class="form-control" id="name" name="last_name" value="{{ old('last_name') }}"
+                                       placeholder="Last Name">
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="name" name="email" value=""
+                                <input type="text" class="form-control" id="name" name="email" value="{{ old('email') }}"
                                        placeholder="E-mail">
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="tel" class="form-control" id="name" name="phone" value=""
+                                <input type="tel" class="form-control" id="name" name="phone" value="{{ old('phone') }}"
                                        placeholder="Phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
                             </div>
                             <div class="col-md-6 form-group p_star">

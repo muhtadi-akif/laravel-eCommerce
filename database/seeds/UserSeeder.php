@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,7 @@ class UserSeeder extends Seeder
         ];
 
         $user = Sentinel::registerAndActivate($credentials);
-        $role = Sentinel::findRoleByName('Administrator');
+        $role = Sentinel::findRoleByName(User::ROLE_ADMIN);
         $role->users()->attach($user);
     }
 }

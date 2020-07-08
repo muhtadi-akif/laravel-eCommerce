@@ -6,6 +6,7 @@ use App\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
 use App\User;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -40,29 +41,32 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $username = $request->input('username');
+        $first_name = $request->input('first_name');
+        $last_name = $request->input('last_name');
         $password = $request->input('password');
-        $name = $request->input('name');
         $email = $request->input('email');
         $phone = $request->input('phone');
         $gender = $request->input('gender');
-        $error = (new UserController())->userValidation($username, $password);
-        if ($error) {
-            return Redirect::back()->withErrors($error)->withInput($request->input());
+        $credentials = [
+            'email'    => $email,
+            'password' => $password,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+        ];
+
+        try{
+            $user = Sentinel::registerAndActivate($credentials);
+            $role = Sentinel::findRoleByName(User::ROLE_CUSTOMER);
+            $role->users()->attach($user);
+        }catch (\Exception $e){
+            return Redirect::back()->withErrors($e->getMessage())->withInput($request->input());
         }
-        $user = new User;
-        $user->username = $username;
-        $user->password = $password;
-        $user->type = User::TYPE_CUSTOMER;
-        $user->save();
 
         $customer = new Customer();
-        $customer->name = $name;
-        $customer->email = $email;
         $customer->phone = $phone;
         $customer->image_url = 'https://www.nepic.co.uk/wp-content/uploads/2016/11/blank-staff-circle-male.png';
         $customer->gender = $gender;
-        $customer->aranoz_user_id = $user->id;
+        $customer->user_id = $user->id;
         $customer->save();
         return Redirect::to('/customers');
     }
