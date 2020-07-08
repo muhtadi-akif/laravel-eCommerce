@@ -137,9 +137,7 @@ class CustomerController extends Controller
 
     public function logout()
     {
-        if (Session::has(User::SESSION_CUSTOMER_LOGIN)) {
-            Session::forget(User::SESSION_CUSTOMER_LOGIN);
-            return Redirect::to('/');
-        }
+        Sentinel::logout();
+        return Redirect::to('/');
     }
 }
