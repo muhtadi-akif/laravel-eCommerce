@@ -19,8 +19,8 @@
                             <img class="profile_picture" src="{{$customer->image_url}}" alt=""/>
                         </div>
                         <div class="media-body">
-                            <h3>{{$customer->name}}</h3>
-                            <h4>{{$customer->email}}</h4>
+                            <h3>{{$customer->user->first_name}} {{$customer->user->first_name}}</h3>
+                            <h4>{{$customer->user->email}}</h4>
                             <h4>{{$customer->phone}}</h4>
                             <a href="" class="edit_btn" data-toggle="modal" data-target="#modal-customer-logout">Logout</a>
                         </div>

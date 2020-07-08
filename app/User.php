@@ -2,15 +2,13 @@
 
 namespace App;
 
+use Cartalyst\Sentinel\Users\EloquentUser;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class User extends EloquentUser
 {
     const ROLE_CUSTOMER = "Customer";
     const ROLE_ADMIN = "Administrator";
-    const SESSION_ADMIN_LOGIN = "session_admin";
-    const SESSION_CUSTOMER_LOGIN = "session_customer";
-
 
 
     public function customer()

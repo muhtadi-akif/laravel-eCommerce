@@ -74,10 +74,10 @@
                             </li>
 
                             <li class="nav-item">
-                                @if(\Illuminate\Support\Facades\Session::has(constant('App\User::SESSION_CUSTOMER_LOGIN')))
+                                @if($user = Cartalyst\Sentinel\Laravel\Facades\Sentinel::check())
                                     <a class="nav-link"
-                                       href="/customers/{{Session::get(constant('App\User::SESSION_CUSTOMER_LOGIN'))->id}}">
-                                        {{Session::get(constant('App\AranozUser::SESSION_CUSTOMER_LOGIN'))->name}}
+                                       href="/customers/{{$user->customer->id}}">
+                                        {{$user->first_name}} {{$user->last_name}}
                                     </a>
                                 @else
                                     <a class="nav-link" href="/customers">Login</a>

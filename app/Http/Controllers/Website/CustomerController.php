@@ -48,17 +48,17 @@ class CustomerController extends Controller
         $phone = $request->input('phone');
         $gender = $request->input('gender');
         $credentials = [
-            'email'    => $email,
+            'email' => $email,
             'password' => $password,
             'first_name' => $first_name,
             'last_name' => $last_name,
         ];
 
-        try{
+        try {
             $user = Sentinel::registerAndActivate($credentials);
             $role = Sentinel::findRoleByName(User::ROLE_CUSTOMER);
             $role->users()->attach($user);
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return Redirect::back()->withErrors($e->getMessage())->withInput($request->input());
         }
 
@@ -119,14 +119,18 @@ class CustomerController extends Controller
 
     public function login(Request $request)
     {
-        $username = $request->input('username');
+        $email = $request->input('email');
         $password = $request->input('password');
-        $user = User::where('username', $username)->where('password', $password)
-            ->where('type', User::TYPE_CUSTOMER)->first();
+        $credentials = [
+            'email' => $email,
+            'password' => $password,
+        ];
+
+        $user = Sentinel::authenticate($credentials);
+
         if (!$user) {
             return Redirect::back()->withErrors('Wrong username or password')->withInput($request->input());
         } else {
-            Session::put(User::SESSION_CUSTOMER_LOGIN, $user->customer);
             return Redirect::to('/');
         }
     }

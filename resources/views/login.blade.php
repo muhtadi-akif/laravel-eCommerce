@@ -21,8 +21,8 @@
                             <form class="row contact_form" action="/customers/login" method="post" novalidate="novalidate">
                                 {{csrf_field()}}
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="name" name="username"
-                                        placeholder="Username">
+                                    <input type="text" class="form-control" id="name" name="email"
+                                        placeholder="Email">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="password" class="form-control" id="password" name="password"
