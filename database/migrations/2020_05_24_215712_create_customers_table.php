@@ -15,12 +15,12 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('image_url');
             $table->enum('gender', ['male', 'female']);
-            $table->foreignId('aranoz_user_id')->constrained()->cascadeOnDelete();
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')
+                ->on('users')->onDelete('cascade');
         });
     }
 

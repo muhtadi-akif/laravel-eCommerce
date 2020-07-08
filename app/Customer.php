@@ -9,7 +9,7 @@ class Customer extends Model
     public $timestamps = false;
 
     public function user(){
-        return $this->belongsTo(AranozUser::class);
+        return $this->belongsTo(User::class);
     }
 
     public function orderDetails(){

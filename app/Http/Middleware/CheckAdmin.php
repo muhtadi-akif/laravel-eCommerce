@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\AranozUser;
+use App\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -18,7 +18,7 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (!Session::has(AranozUser::SESSION_ADMIN_LOGIN))
+        if (!Session::has(User::SESSION_ADMIN_LOGIN))
         {
             return Redirect::to('/admin/login')->withErrors('Please login first');
         }else {

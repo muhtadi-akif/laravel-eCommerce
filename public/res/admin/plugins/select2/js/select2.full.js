@@ -1632,11 +1632,11 @@ S2.define('select2/selection/single',[
     });
 
     this.$selection.on('focus', function (evt) {
-      // AranozUser focuses on the container
+      // User focuses on the container
     });
 
     this.$selection.on('blur', function (evt) {
-      // AranozUser exits the container
+      // User exits the container
     });
 
     container.on('focus', function (evt) {

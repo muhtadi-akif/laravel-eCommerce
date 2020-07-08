@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Website;
 use App\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
-use App\AranozUser;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -50,10 +50,10 @@ class CustomerController extends Controller
         if ($error) {
             return Redirect::back()->withErrors($error)->withInput($request->input());
         }
-        $user = new AranozUser;
+        $user = new User;
         $user->username = $username;
         $user->password = $password;
-        $user->type = AranozUser::TYPE_CUSTOMER;
+        $user->type = User::TYPE_CUSTOMER;
         $user->save();
 
         $customer = new Customer();
@@ -117,20 +117,20 @@ class CustomerController extends Controller
     {
         $username = $request->input('username');
         $password = $request->input('password');
-        $user = AranozUser::where('username', $username)->where('password', $password)
-            ->where('type', AranozUser::TYPE_CUSTOMER)->first();
+        $user = User::where('username', $username)->where('password', $password)
+            ->where('type', User::TYPE_CUSTOMER)->first();
         if (!$user) {
             return Redirect::back()->withErrors('Wrong username or password')->withInput($request->input());
         } else {
-            Session::put(AranozUser::SESSION_CUSTOMER_LOGIN, $user->customer);
+            Session::put(User::SESSION_CUSTOMER_LOGIN, $user->customer);
             return Redirect::to('/');
         }
     }
 
     public function logout()
     {
-        if (Session::has(AranozUser::SESSION_CUSTOMER_LOGIN)) {
-            Session::forget(AranozUser::SESSION_CUSTOMER_LOGIN);
+        if (Session::has(User::SESSION_CUSTOMER_LOGIN)) {
+            Session::forget(User::SESSION_CUSTOMER_LOGIN);
             return Redirect::to('/');
         }
     }

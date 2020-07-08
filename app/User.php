@@ -4,12 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AranozUser extends Model
+class User extends Model
 {
     const TYPE_ADMIN = "admin";
     const TYPE_CUSTOMER = "customer";
     const SESSION_ADMIN_LOGIN = "session_admin";
     const SESSION_CUSTOMER_LOGIN = "session_customer";
+
 
 
     public function customer()

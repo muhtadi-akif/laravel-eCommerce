@@ -19,33 +19,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //register through sentinel
-//        $check = Sentinel::register([
-//            'email' => 'akif@co-well.jp',
-//            'password' => 'Hello1234',
-//        ]);
 
-        //activation through sentinel
-//        $user = Sentinel::findById(1);
-//        $activation = Activation::create($user);
-//        $activation = Activation::complete($user, '64u3G4Y45JBmwpKDngirfz3IIAH3a95X');
 
-        //login through sentinel
-        /*    $credentials = [
-                'email' => 'akif@co-well.jp',
-                'password' => 'Hello1234',
-            ];
-
-            $check = Sentinel::authenticate($credentials);*/
-
-        $check = Sentinel::logout();
-
-        return response()->json($check);
-
-//        $products = Product::all();
-//        $categories = Category::latest()->take(7)->get();
-//        $brands = Brand::latest()->take(7)->get();
-//        return view('welcome', compact('products', 'categories', 'brands'));
+        $products = Product::all();
+        $categories = Category::latest()->take(7)->get();
+        $brands = Brand::latest()->take(7)->get();
+        return view('welcome', compact('products', 'categories', 'brands'));
     }
 
     /**

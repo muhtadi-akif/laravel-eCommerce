@@ -57,7 +57,7 @@ var RowGroup = function ( dt, opts ) {
 		throw 'RowGroup requires DataTables 1.10.8 or newer';
 	}
 
-	// AranozUser and defaults configuration object
+	// User and defaults configuration object
 	this.c = $.extend( true, {},
 		DataTable.defaults.rowGroup,
 		RowGroup.defaults,

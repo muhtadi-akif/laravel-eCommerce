@@ -66,7 +66,7 @@ var AutoFill = function( dt, opts )
 		throw( "Warning: AutoFill requires DataTables 1.10.8 or greater");
 	}
 
-	// AranozUser and defaults configuration object
+	// User and defaults configuration object
 	this.c = $.extend( true, {},
 		DataTable.defaults.autoFill,
 		AutoFill.defaults,

@@ -50,7 +50,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | AranozUser Providers
+    | User Providers
     |--------------------------------------------------------------------------
     |
     | All authentication drivers have a user provider. This defines how the
@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\AranozUser::class,
+            'model' => App\User::class,
         ],
 
         // 'users' => [
