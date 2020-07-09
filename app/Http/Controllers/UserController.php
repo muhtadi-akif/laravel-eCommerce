@@ -97,7 +97,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $admin = User::find($id);
+
+        $admin = Sentinel::findById($id);
         return view('admin/edit', compact('admin'));
     }
 
@@ -110,16 +111,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $username = $request->input('username');
+        $user = Sentinel::findById($id);
+        $first_name = $request->input('first_name');
+        $last_name = $request->input('last_name');
+        $email = $request->input('email');
         $password = $request->input('password');
-        $error = $this->userValidation($username, $password, $id);
-        if ($error) {
-            return Redirect::back()->withErrors($error)->withInput($request->input());
-        }
-        $admin = User::find($id);
-        $admin->username = $username;
-        $admin->password = $password;
-        $admin->save();
+        $credentials = [
+            'email' => $email,
+            'password' => $password,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+        ];
+        $user = Sentinel::update($user, $credentials);
         return Redirect::to('admin');
     }
 
