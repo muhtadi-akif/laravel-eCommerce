@@ -18,7 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $admins = User::where('type', User::TYPE_ADMIN)->paginate(5);
+        $role = Sentinel::findRoleByName(User::ROLE_ADMIN);
+        $admins = $role->users()->paginate(5);
         return view('admin/list', compact('admins'));
     }
 
