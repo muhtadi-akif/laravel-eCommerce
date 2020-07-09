@@ -135,6 +135,7 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
+        Sentinel::logout();
         $email = $request->input('email');
         $password = $request->input('password');
         $credentials = [

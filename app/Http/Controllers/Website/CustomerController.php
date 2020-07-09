@@ -119,6 +119,7 @@ class CustomerController extends Controller
 
     public function login(Request $request)
     {
+        Sentinel::logout();
         $email = $request->input('email');
         $password = $request->input('password');
         $credentials = [
@@ -130,6 +131,8 @@ class CustomerController extends Controller
 
         if (!$user) {
             return Redirect::back()->withErrors('Wrong credentials')->withInput($request->input());
+        } else if ($user->hasAccess([User::ADMIN_PERMISSION])) {
+            return Redirect::back()->withErrors('You do not have any customer access');
         } else {
             return Redirect::to('/');
         }

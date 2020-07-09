@@ -23,7 +23,7 @@ class CheckAdmin
         if (!$user) {
             return Redirect::to('/admin/login')->withErrors('Please login first');
         } else if (!$user->hasAccess([User::ADMIN_PERMISSION])) {
-            return Redirect::to('/admin/login')->withErrors('No admin access');
+            return Redirect::to('/admin/login')->withErrors('You do not have any admin access');
         } else {
             return $next($request);
         }

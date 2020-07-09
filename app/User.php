@@ -10,6 +10,7 @@ class User extends EloquentUser
     const ROLE_CUSTOMER = "Customer";
     const ROLE_ADMIN = "Administrator";
     const ADMIN_PERMISSION = "admin";
+    const CUSTOMER_PERMISSION = "customer";
 
 
     public function customer()

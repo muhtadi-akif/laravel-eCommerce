@@ -75,10 +75,14 @@
 
                             <li class="nav-item">
                                 @if($user = Cartalyst\Sentinel\Laravel\Facades\Sentinel::check())
-                                    <a class="nav-link"
-                                       href="/customers/{{$user->customer->id}}">
-                                        {{$user->first_name}} {{$user->last_name}}
-                                    </a>
+                                    @if(!$user->hasAccess([App\User::ADMIN_PERMISSION]))
+                                        <a class="nav-link"
+                                           href="/customers/{{$user->customer->id}}">
+                                            {{$user->first_name}} {{$user->last_name}}
+                                        </a>
+                                    @else
+                                        <a class="nav-link" href="/customers">Login</a>
+                                    @endif
                                 @else
                                     <a class="nav-link" href="/customers">Login</a>
                                 @endif

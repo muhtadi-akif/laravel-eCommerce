@@ -13,18 +13,22 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-       $adminRole = Sentinel::getRoleRepository()->createModel()->create([
+        $adminRole = Sentinel::getRoleRepository()->createModel()->create([
             'name' => User::ROLE_ADMIN,
             'slug' => 'administrator',
         ]);
 
-        Sentinel::getRoleRepository()->createModel()->create([
+        $customerRole = Sentinel::getRoleRepository()->createModel()->create([
             'name' => User::ROLE_CUSTOMER,
             'slug' => 'customer',
         ]);
 
         $adminRole->permissions = [
             User::ADMIN_PERMISSION => true,
+        ];
+
+        $adminRole->permissions = [
+            User::ADMIN_PERMISSION => false,
         ];
 
         $adminRole->save();
