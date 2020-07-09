@@ -41,17 +41,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $username = $request->input('username');
+        $first_name = $request->input('first_name');
+        $last_name = $request->input('last_name');
+        $email = $request->input('email');
         $password = $request->input('password');
-        $error = $this->userValidation($username, $password);
-        if ($error) {
-            return Redirect::back()->withErrors($error)->withInput($request->input());
-        }
-        $user = new User;
-        $user->username = $username;
-        $user->password = $password;
-        $user->type = User::TYPE_ADMIN;
-        $user->save();
+        $credentials = [
+            'email' => $email,
+            'password' => $password,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+        ];
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleByName(User::ROLE_ADMIN);
+        $role->users()->attach($user);
 
         return Redirect::to('admin');
     }
