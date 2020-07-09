@@ -27,11 +27,12 @@ class RoleSeeder extends Seeder
             User::ADMIN_PERMISSION => true,
         ];
 
-        $adminRole->permissions = [
+        $customerRole->permissions = [
             User::ADMIN_PERMISSION => false,
         ];
 
         $adminRole->save();
+        $customerRole->save();
 
     }
 }
