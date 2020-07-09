@@ -32,20 +32,24 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>Gender</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($customers as $customer)
+                        @foreach ($users as $user)
                             <tr>
-                                <td><img class="profile_picture" src="{{$customer->image_url}}" alt="" style="width:15%"/></td>
-                                <td>{{$customer->name}}</td>
-                                <td>{{$customer->email}}</td>
-                                <td>{{$customer->phone}}</td>
+                                <td><img class="profile_picture" src="{{$user->customer->image_url}}" alt=""
+                                         style="width:15%"/></td>
+                                <td>{{$user->first_name}} {{$user->last_name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->customer->phone}}</td>
+                                <td>{{$user->customer->gender}}</td>
                                 <td>
                                     <button type="button" class="btn btn-danger customer-delete"
                                             data-toggle="modal" data-target="#modal-customer-delete"
-                                            data-id="{{$customer->id}}" data-name="{{$customer->name}}">Delete</button>
+                                            data-id="{{$user->customer->id}}" data-name="{{$user->first_name}} {{$user->last_name}}">Delete
+                                    </button>
 
                                 </td>
                             </tr>
@@ -56,7 +60,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $customers->links() }}
+                        {{ $users->links() }}
                     </ul>
                 </div>
             </div>

@@ -36,10 +36,10 @@ Route::middleware('admin_check')->group(function () {
         return view('admin/dashboard');
     });
     Route::resource('admin/products', 'ProductController');
+    Route::resource('/admin/customers', 'CustomerController');
     Route::resource('admin', 'UserController');
     Route::resource('categories', 'CategoryController');
     Route::resource('brands', 'BrandController');
-    Route::resource('/admin/customers', 'CustomerController');
 });
 
 

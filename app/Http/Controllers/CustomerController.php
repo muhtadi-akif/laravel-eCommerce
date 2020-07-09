@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\User;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -15,8 +17,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::paginate(10);
-        return view('admin/customer/index', compact('customers'));
+        $role = Sentinel::findRoleByName(User::ROLE_CUSTOMER);
+        $users = $role->users()->paginate(5);
+        return view('admin/customer/index', compact('users'));
     }
 
     /**
