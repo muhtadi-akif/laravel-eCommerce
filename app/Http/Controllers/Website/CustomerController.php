@@ -129,7 +129,7 @@ class CustomerController extends Controller
         $user = Sentinel::authenticate($credentials);
 
         if (!$user) {
-            return Redirect::back()->withErrors('Wrong username or password')->withInput($request->input());
+            return Redirect::back()->withErrors('Wrong credentials')->withInput($request->input());
         } else {
             return Redirect::to('/');
         }

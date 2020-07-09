@@ -31,7 +31,7 @@
       <form action="/admin/login/check" method="post">
         {{ csrf_field() }}
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" name="username" value="{{ old('username') }}">
+          <input type="text" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>

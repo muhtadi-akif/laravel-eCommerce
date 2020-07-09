@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
@@ -34,13 +35,13 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $username = $request->input('username');
-        $password =  $request->input('password');
+        $password = $request->input('password');
         $error = $this->userValidation($username, $password);
         if ($error) {
             return Redirect::back()->withErrors($error)->withInput($request->input());
@@ -77,7 +78,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -88,7 +89,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -100,14 +101,14 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $username = $request->input('username');
-        $password =  $request->input('password');
+        $password = $request->input('password');
         $error = $this->userValidation($username, $password, $id);
         if ($error) {
             return Redirect::back()->withErrors($error)->withInput($request->input());
@@ -122,34 +123,37 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-       $user = User::find($id);
-       $user->delete();
-       return Redirect::to('admin');
+        $user = User::find($id);
+        $user->delete();
+        return Redirect::to('admin');
     }
 
     public function login(Request $request)
     {
-        $username = $request->input('username');
-        $password =  $request->input('password');
-        $user = User::where('username', $username)->where('password', $password)->where('type', User::TYPE_ADMIN)->first();
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $credentials = [
+            'email' => $email,
+            'password' => $password,
+        ];
+
+        $user = Sentinel::authenticate($credentials);
+
         if (!$user) {
-            return Redirect::back()->withErrors('Wrong username or password')->withInput($request->input());
+            return Redirect::back()->withErrors('Wrong credentials')->withInput($request->input());
         } else {
-            Session::put(User::SESSION_ADMIN_LOGIN, $user);
             return Redirect::to('dashboard');
         }
     }
 
     public function logout()
     {
-        if (Session::has(User::SESSION_ADMIN_LOGIN)) {
-            Session::forget(User::SESSION_ADMIN_LOGIN);
-            return Redirect::to('/admin/login');
-        }
+        Sentinel::logout();
+        return Redirect::to('/admin/login');
     }
 }
