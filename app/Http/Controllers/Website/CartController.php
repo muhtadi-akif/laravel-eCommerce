@@ -17,7 +17,7 @@ class CartController extends Controller
      */
     public function index(Request $request)
     {
-        $items = $request->session()->get(Product::CART_SESSION);
+        $items = array_reverse($request->session()->get(Product::CART_SESSION));
         return view('cart', compact('items'));
     }
 
