@@ -6,6 +6,7 @@ use App\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
 use App\User;
+use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -127,7 +128,13 @@ class CustomerController extends Controller
             'password' => $password,
         ];
 
-        $user = Sentinel::authenticate($credentials);
+        try {
+            $user = Sentinel::authenticate($credentials);
+        } catch (ThrottlingException $exception) {
+            $delay = floor($exception->getDelay() / 60);
+            return Redirect::back()->withErrors("You have been disabled for ". $delay." min(s)");
+        }
+
 
         if (!$user) {
             return Redirect::back()->withErrors('Wrong credentials')->withInput($request->input());
