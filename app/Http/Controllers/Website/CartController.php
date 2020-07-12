@@ -24,11 +24,13 @@ class CartController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->session()->forget(Product::CART_SESSION);
+        return Redirect::to('/');
     }
 
     /**

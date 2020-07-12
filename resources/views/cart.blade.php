@@ -51,7 +51,7 @@
                         <td></td>
                         <td>
                             <div class="cupon_text float-right">
-                                <a class="btn_1" href="#">Clear Cart</a>
+                                <a class="btn_1" href="/carts/create">Clear Cart</a>
                             </div>
                         </td>
                     </tr>
