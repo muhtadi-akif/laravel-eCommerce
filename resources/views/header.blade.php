@@ -28,9 +28,9 @@
     <link rel="stylesheet" href="{{asset('res/admin/plugins/toastr/toastr.min.css')}}">
 </head>
 @if(\Illuminate\Support\Facades\Session::has(constant('App\Product::CART_SESSION')))
-    {{$cart_count = count(\Illuminate\Support\Facades\Session::get(constant('App\Product::CART_SESSION'))).''}}
+    @php($cart_count = count(\Illuminate\Support\Facades\Session::get(constant('App\Product::CART_SESSION'))))
 @else
-    {{$cart_count = "0"}}
+    @php($cart_count = 0)
 @endif
 <style>
     #cart-badge::after {
@@ -102,7 +102,7 @@
 
                     <div class="hearer_icon d-flex">
                         <div class="dropdown cart">
-                            <a href=""><i id="cart-badge" class="ti-shopping-cart"></i></a>
+                            <a href="/carts"><i id="cart-badge" class="ti-shopping-cart"></i></a>
                         </div>
                     </div>
                 </nav>
