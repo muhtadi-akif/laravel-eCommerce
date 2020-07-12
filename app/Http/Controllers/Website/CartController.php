@@ -71,9 +71,8 @@ class CartController extends Controller
      * @param \App\Product $product
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        $product = Product::find($id)->first();
         $quantity = $request->input('quantity');
         $temp_order = [
             'quantity' => $quantity,

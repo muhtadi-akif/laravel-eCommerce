@@ -21,7 +21,9 @@ Route::resource('products', 'Website\ProductController')->only('show');
 Route::post('/customers/login', 'Website\CustomerController@login');
 Route::get('/customers/logout', 'Website\CustomerController@logout');
 Route::resource('customers', 'Website\CustomerController');
-Route::resource('carts', 'Website\CartController');
+Route::resource('carts', 'Website\CartController',['parameters' => [
+    'carts' => 'product'
+]]);
 
 
 
