@@ -50,7 +50,7 @@
                                 <li>
                                     <a href="/products/{{$item['product']->id}}">{{$item['product']->title}}
                                         <span class="middle">x {{$item['quantity']}}</span>
-                                        <span class="last">{{$item['quantity']*$item['product']->price}}</span>
+                                        <span class="last">¥{{$item['quantity']*$item['product']->price}}</span>
                                     </a>
                                 </li>
                             @endforeach
@@ -58,7 +58,7 @@
                         <ul class="list list_2">
                             <li>
                                 <a href="#">Total
-                                    <span>{{$total}}</span>
+                                    <span>¥{{$total}}</span>
                                 </a>
                             </li>
                         </ul>

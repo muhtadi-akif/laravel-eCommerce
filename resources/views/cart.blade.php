@@ -30,13 +30,13 @@
                                 <p>{{$item['product']->title}}</p>
                             </td>
                             <td>
-                                <h5>{{$item['product']->price}}</h5>
+                                <h5>¥{{$item['product']->price}}</h5>
                             </td>
                             <td>
                                 <h5>{{$item['quantity']}}</h5>
                             </td>
                             <td>
-                                <h5>{{$item['product']->price*$item['quantity']}}</h5>
+                                <h5>¥{{$item['product']->price*$item['quantity']}}</h5>
                             </td>
                         </tr>
                     @endforeach
