@@ -24,7 +24,7 @@
                         <tr id="upper_tr">
                             <td>
                                 <img src="{{$item['product']->image_url}}" alt="{{$item['product']->slug}}"
-                                     style="width: 20%"/>
+                                     style="max-width: 50px"/>
                             </td>
                             <td>
                                 <p>{{$item['product']->title}}</p>
