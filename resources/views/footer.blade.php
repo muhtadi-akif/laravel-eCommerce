@@ -38,6 +38,13 @@
         toastr.error("{{$errors->first()}}");
     });
     @endif
+
+    @if(\Illuminate\Support\Facades\Session::has(\App\User::SUCCESS_MESSAGE))
+    $(document).ready(function () {
+        toastr.success("{{\Illuminate\Support\Facades\Session::get(\App\User::SUCCESS_MESSAGE)}}");
+    });
+    @endif
+
 </script>
 <script type="text/javascript">
     $(document).ready(function () {

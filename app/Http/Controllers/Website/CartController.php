@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Order;
+use App\OrderDetail;
 use App\Product;
+use App\User;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -37,11 +41,35 @@ class CartController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $total = 0;
+        $address = $request->input('address');
+        $user = Sentinel::check();
+        $order_detail = new OrderDetail();
+        $order_detail->customer_id = $user->customer->id;
+        $order_detail->delivery_address = $address;
+        $order_detail->total_price = $total;
+        $order_detail->save();
+
+        $items = array_reverse($request->session()->get(Product::CART_SESSION));
+
+        foreach ($items as $item) {
+            $total += $item['quantity'] * $item['product']->price;
+            $order = new Order();
+            $order->order_detail_id = $order_detail->id;
+            $order->product_id = $item['product']->id;
+            $order->price = $item['product']->price;
+            $order->quantity = $item['quantity'];
+            $order->save();
+        }
+        $order_detail->total_price = $total;
+        $order_detail->save();
+        $request->session()->forget(Product::CART_SESSION);
+        return Redirect::to('/')->with(User::SUCCESS_MESSAGE, "You have successfully completed your order.");
+
     }
 
     /**
