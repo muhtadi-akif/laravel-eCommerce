@@ -28,6 +28,12 @@
     <link rel="stylesheet" href="{{asset('res/admin/plugins/toastr/toastr.min.css')}}">
 </head>
 
+<style>
+    #cart-badge::after {
+        content: "34"
+    }
+</style>
+
 <body>
 <!--::header part start::-->
 <header class="main_menu home_menu">
@@ -88,6 +94,12 @@
                                 @endif
                             </li>
                         </ul>
+                    </div>
+
+                    <div class="hearer_icon d-flex">
+                        <div class="dropdown cart">
+                            <a href=""><i id="cart-badge" class="ti-shopping-cart"></i></a>
+                        </div>
                     </div>
                 </nav>
             </div>

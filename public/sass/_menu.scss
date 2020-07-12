@@ -120,13 +120,13 @@
 			content: "";
 			border: 0px solid transparent;
 		}
-	
+
 		i {
 			color: $black_color;
 			position: relative;
 			z-index: 1;
 			font-size: 15px;
-	
+
 			&:after {
 				position: absolute;
 				border-radius: 50%;
@@ -141,7 +141,7 @@
 				font-size: 10px;
 				color: $white-color;
 			}
-	
+
 		}
 	}
 }
@@ -261,7 +261,7 @@
 	.menu_icon{
 		i{
 			color: $black_color;
-			
+
 		}
 	}
 	.main_menu a i {
