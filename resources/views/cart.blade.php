@@ -65,7 +65,7 @@
 
                         <td>
                             <div class="shipping_box">
-                                <a class="btn_1" href="#">Proceed to Checkout</a>
+                                <a class="btn_1" href="/carts/checkout">Proceed to Checkout</a>
                             </div>
                         </td>
                     </tr>

@@ -211,7 +211,7 @@
     padding-right: 0;
   }
   @media #{$medium_device}{
-  
+
   }
 }
 
@@ -223,7 +223,7 @@
     padding-right: 0;
   }
   @media #{$medium_device}{
-  
+
   }
   h3 {
     margin-bottom: 20px;
@@ -292,14 +292,14 @@
     display: block !important;
   }
   @media #{$large_mobile}{
-  
+
   }
-  
+
   @media #{$tab_device}{
-  
+
   }
   @media #{$medium_device}{
-  
+
   }
   .left_dorp {
     .sorting {
@@ -386,13 +386,13 @@
       margin-bottom: 20px;
     }
     @media #{$large_mobile}{
-    
+
     }
     @media #{$tab_device}{
-    
+
     }
     @media #{$medium_device}{
-    
+
     }
     p {
       color: #020202;
@@ -402,13 +402,13 @@
         line-height: 13px;
       }
       @media #{$large_mobile}{
-      
+
       }
       @media #{$tab_device}{
-      
+
       }
       @media #{$medium_device}{
-      
+
       }
       span {
         color: $primary-color;
@@ -589,14 +589,14 @@
     margin-top: 30px;
   }
   @media #{$large_mobile}{
-  
+
   }
-  
+
   @media #{$tab_device}{
-  
+
   }
   @media #{$medium_device}{
-  
+
   }
   h5{
     font-weight: 700;
@@ -607,14 +607,14 @@
       margin-bottom: 15px;
     }
     @media #{$large_mobile}{
-    
+
     }
-    
+
     @media #{$tab_device}{
-    
+
     }
     @media #{$medium_device}{
-    
+
     }
     span{
       margin: 0 10px;
@@ -700,7 +700,7 @@
       }
     }
   }
-  
+
 }
 .cart_area {
   .product_count {
@@ -708,14 +708,14 @@
     position: relative;
     margin-bottom: 24px;
     overflow: hidden;
-  
+
     input {
       width: 76px;
       border: 1px solid #eeeeee;
       border-radius: 3px;
       padding-left: 10px;
     }
-  
+
     .input-number-increment {
       position: absolute;
       right: 0;
@@ -723,7 +723,7 @@
       padding: 7px;
       border-left: 1px solid $font_d;
       display: inline-block;
-  
+
       &:after {
         position: absolute;
         content: "";
@@ -733,9 +733,9 @@
         height: 1px;
         background-color: $font_d;
       }
-  
+
     }
-  
+
     .input-number-decrement {
       position: absolute;
       right: 0;
@@ -749,12 +749,12 @@
     .media{
       display: block;
     }
-  }  
+  }
   @media #{$large_mobile}{
     .media{
       display: block;
     }
-  }  
+  }
 }
 
 
@@ -766,7 +766,7 @@
     padding-bottom: 70px;
   }
   @media #{$medium_device}{
-  
+
   }
   .nav.nav-tabs {
     display: block;
@@ -798,7 +798,7 @@
           margin-bottom: 10px;
         }
         @media #{$medium_device}{
-        
+
         }
         &.active {
           background: $primary-color;
@@ -1011,7 +1011,7 @@
         color: #fbd600;
       }
     }
-   
+
   }
   .form-control{
     height: 50px;
@@ -1380,7 +1380,7 @@
       line-height: 17px;
       padding: 12px;
     }
-    
+
     a {
       color: $primary-color;
       text-decoration: underline;
@@ -1396,7 +1396,7 @@
     @media #{$tab}{
       padding-left: 0;
     }
-    
+
   }
 
   .contact_form {
@@ -1504,7 +1504,7 @@
     @media #{$tab}{
       margin-left: 0;
     }
-    
+
   }
 
   .tp_btn {
@@ -1895,7 +1895,7 @@
     }
     .login_part_text_iner, .login_part_form_iner{
       display: table-cell;
-      vertical-align: middle; 
+      vertical-align: middle;
     }
   }
   .login_part_text{
@@ -1948,7 +1948,7 @@
       ::placeholder{
         color: #c3c3c3;
       }
-      
+
     }
   }
   .creat_account{
@@ -2003,7 +2003,7 @@
       align-items: center;
       padding: 12px 15px;
   }
-  
+
   .product_count .input-number {
       display: inline-block;
       width: 60px;
@@ -2011,14 +2011,14 @@
         width: 30px;
       }
       @media #{$large_mobile}{
-      
+
       }
 
       @media #{$tab_device}{
-      
+
       }
       @media #{$medium_device}{
-      
+
       }
   }
   .Wishlist {
@@ -2047,14 +2047,14 @@
       padding: 13px 20px;
     }
     @media #{$large_mobile}{
-    
+
     }
 
     @media #{$tab_device}{
-    
+
     }
     @media #{$medium_device}{
-    
+
     }
   }
 }

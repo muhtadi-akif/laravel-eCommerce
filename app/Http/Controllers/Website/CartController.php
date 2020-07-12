@@ -50,9 +50,14 @@ class CartController extends Controller
      * @param \App\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Request $request)
     {
-        //
+        $items = array_reverse($request->session()->get(Product::CART_SESSION));
+        $total = 0;
+        foreach ($items as $item) {
+            $total += $item['quantity'] * $item['product']->price;
+        }
+        return view('checkout', compact('items', 'total'));
     }
 
     /**
