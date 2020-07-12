@@ -27,13 +27,17 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset('res/admin/plugins/toastr/toastr.min.css')}}">
 </head>
-
+@if(\Illuminate\Support\Facades\Session::has(constant('App\Product::CART_SESSION')))
+    {{$cart_count = count(\Illuminate\Support\Facades\Session::get(constant('App\Product::CART_SESSION'))).''}}
+@else
+    {{$cart_count = "0"}}
+@endif
 <style>
     #cart-badge::after {
-        content: "34"
+        content: "{{$cart_count}}"
+
     }
 </style>
-
 <body>
 <!--::header part start::-->
 <header class="main_menu home_menu">

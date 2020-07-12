@@ -32,14 +32,18 @@
                     <p>
                         {{$product->short_description}}
                     </p>
-                    <div class="card_area d-flex justify-content-between align-items-center">
-                        <div class="product_count">
-                            <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-                            <input class="input-number" type="text" value="1" min="0" max="10">
-                            <span class="number-increment"> <i class="ti-plus"></i></span>
+                    <form action="/carts/{{$product->id}}" method="POST">
+                        @method('PUT')
+                        {{ csrf_field() }}
+                        <div class="card_area d-flex justify-content-between align-items-center">
+                            <div class="product_count">
+                                <span class="inumber-decrement"> <i class="ti-minus"></i></span>
+                                <input class="input-number" type="text" value="1" min="0" max="10" name="quantity">
+                                <span class="number-increment"> <i class="ti-plus"></i></span>
+                            </div>
+                            <button type="submit" class="btn_3">add to cart</button>
                         </div>
-                        <a href="#" class="btn_3">add to cart</a>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

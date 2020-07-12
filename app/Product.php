@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    const CART_SESSION = "cart";
     public function property()
     {
         return $this->hasOne(Property::class);
