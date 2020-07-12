@@ -1,6 +1,6 @@
 @include('header')
 <style>
-    #upper_tr{
+    #upper_tr {
         text-align: center;
     }
 </style>
@@ -12,40 +12,41 @@
                 <table class="table">
                     <thead>
                     <tr id="upper_tr">
-                        <th scope="col">Product</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Price</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Total</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr id="upper_tr">
-                        <td>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/single-product/cart-1.jpg" alt=""/>
-                                </div>
-                                <div class="media-body">
-                                    <p>Minimalistic shop for multipurpose use</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <h5>$360.00</h5>
-                        </td>
-                        <td>
-                            <h5>10</h5>
-                        </td>
-                        <td>
-                            <h5>$720.00</h5>
-                        </td>
-                    </tr>
-
+                    @foreach($items as $item)
+                        <tr id="upper_tr">
+                            <td>
+                                <img src="{{$item['product']->image_url}}" alt="{{$item['product']->slug}}"
+                                     style="width: 20%"/>
+                            </td>
+                            <td>
+                                <p>{{$item['product']->title}}</p>
+                            </td>
+                            <td>
+                                <h5>{{$item['product']->price}}</h5>
+                            </td>
+                            <td>
+                                <h5>{{$item['quantity']}}</h5>
+                            </td>
+                            <td>
+                                <h5>{{$item['product']->price*$item['quantity']}}</h5>
+                            </td>
+                        </tr>
+                    @endforeach
 
                     <tr class="bottom_button">
                         <td>
                             <a class="btn_1" href="/">Continue Shopping</a>
                         </td>
+                        <td></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td>
@@ -55,6 +56,8 @@
                         </td>
                     </tr>
                     <tr class="shipping_area">
+                        <td></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>

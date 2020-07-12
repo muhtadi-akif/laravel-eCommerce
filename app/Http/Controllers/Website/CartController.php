@@ -12,11 +12,13 @@ class CartController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('cart');
+        $items = $request->session()->get(Product::CART_SESSION);
+        return view('cart', compact('items'));
     }
 
     /**
