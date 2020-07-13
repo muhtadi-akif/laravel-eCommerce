@@ -14,7 +14,7 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        $orderDetails = OrderDetail::paginate(5);
+        $orderDetails = OrderDetail::latest()->paginate(5);
         return view('admin/order/index', compact('orderDetails'));
     }
 
