@@ -40,10 +40,13 @@ Route::middleware('admin_check')->group(function () {
     });
     Route::resource('admin/products', 'ProductController');
     Route::resource('/admin/customers', 'CustomerController');
+    Route::resource('/admin/orders', 'OrderDetailController',['parameters' => [
+        'orders' => 'orderDetail'
+    ]]);
     Route::resource('admin', 'UserController');
     Route::resource('categories', 'CategoryController');
     Route::resource('brands', 'BrandController');
-    Route::resource('orders', 'OrderDetailController');
+
 });
 
 

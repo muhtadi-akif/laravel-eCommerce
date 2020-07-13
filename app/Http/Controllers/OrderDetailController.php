@@ -47,7 +47,8 @@ class OrderDetailController extends Controller
      */
     public function show(OrderDetail $orderDetail)
     {
-        //
+
+        return view('admin/order/details', compact('orderDetail'));
     }
 
     /**
