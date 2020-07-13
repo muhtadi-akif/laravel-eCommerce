@@ -43,6 +43,7 @@ Route::middleware('admin_check')->group(function () {
     Route::resource('admin', 'UserController');
     Route::resource('categories', 'CategoryController');
     Route::resource('brands', 'BrandController');
+    Route::resource('orders', 'OrderDetailController');
 });
 
 

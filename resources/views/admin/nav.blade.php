@@ -83,6 +83,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/orders" class="nav-link">
+                        <i class="nav-icon fas  fa-shopping-basket"></i>
+                        <p>
+                            Orders
+                        </p>
+                    </a>
+                </li>
 
             </ul>
         </nav>
