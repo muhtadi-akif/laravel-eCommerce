@@ -25,6 +25,7 @@
                             <th>Customer</th>
                             <th>Delivery Address</th>
                             <th>Total Price</th>
+                            <th>Status</th>
                             <th>Ordered At</th>
                             <th>Action</th>
                         </tr>
@@ -35,6 +36,15 @@
                                 <td>{{$orderDetail->customer->user->first_name}} {{$orderDetail->customer->user->last_name}}</td>
                                 <td>{{$orderDetail->delivery_address}}</td>
                                 <td>¥{{$orderDetail->total_price}}</td>
+                                @if($orderDetail->status==\App\OrderDetail::STATUS_PENDING)
+                                    <p class="warning">Pending</p>
+                                @elseif($orderDetail->status==\App\OrderDetail::STATUS_CANCELLED)
+                                    <p class="danger">Cancelled</p>
+                                @elseif($orderDetail->status==\App\OrderDetail::STATUS_ACCEPTED)
+                                    <p class="success">Accepted</p>
+                                @else
+                                    <p>N/A</p>
+                                @endif
                                 <td>{{$orderDetail->created_at}}</td>
                                 <td>
                                     <div class="btn-group">
