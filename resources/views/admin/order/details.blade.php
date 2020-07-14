@@ -1,5 +1,6 @@
 @include('admin/header')
 @include('admin/nav')
+@include('admin/order/handle')
 <div class="content-wrapper">
     <section class="content" style="margin-top: 8px">
         <div class="container-fluid">
@@ -100,7 +101,10 @@
                                     <button type="button" class="btn btn-success float-right"><i
                                             class="far fa-check-square"></i> Confirm Order
                                     </button>
-                                    <button type="button" class="btn btn-danger float-right" style="margin-right: 5px;">
+                                    <button type="button" class="btn btn-danger float-right order-cancel"
+                                            style="margin-right: 5px;"
+                                            data-toggle="modal" data-target="#modal-order-cancel"
+                                            data-id="{{$orderDetail->id}}">
                                         <i class="fas fa-window-close"></i> Cancel Order
                                     </button>
                                 </div>
@@ -115,3 +119,11 @@
     </section>
 </div>
 @include('admin/footer')
+<script type="text/javascript">
+    $(function () {
+        $(".order-cancel").click(function () {
+            var id = $(this).data('id');
+            $('#cancel_form').attr('action', '/admin/orders/' + id);
+        })
+    });
+</script>>

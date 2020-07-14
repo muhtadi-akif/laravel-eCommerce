@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\OrderDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class OrderDetailController extends Controller
 {
@@ -78,10 +79,12 @@ class OrderDetailController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\OrderDetail $orderDetail
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(OrderDetail $orderDetail)
     {
-        //
+        $orderDetail->status = OrderDetail::STATUS_CANCELLED;
+        $orderDetail->save();
+        return Redirect::to('admin/orders');
     }
 }
