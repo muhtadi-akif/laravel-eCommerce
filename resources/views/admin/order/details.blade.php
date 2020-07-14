@@ -98,8 +98,11 @@
                         @if($orderDetail->status==\App\OrderDetail::STATUS_PENDING)
                             <div class="row no-print">
                                 <div class="col-12">
-                                    <button type="button" class="btn btn-success float-right"><i
-                                            class="far fa-check-square"></i> Confirm Order
+                                    <button type="button" class="btn btn-success float-right order-accept"
+                                            data-toggle="modal"
+                                            data-target="#modal-order-accept"
+                                            data-id="{{$orderDetail->id}}">
+                                        <i class="far fa-check-square"></i> Confirm Order
                                     </button>
                                     <button type="button" class="btn btn-danger float-right order-cancel"
                                             style="margin-right: 5px;"
@@ -125,5 +128,11 @@
             var id = $(this).data('id');
             $('#cancel_form').attr('action', '/admin/orders/' + id);
         })
+
+        $(".order-accept").click(function () {
+            var id = $(this).data('id');
+            $('#accept_form').attr('action', '/admin/orders/' + id);
+        })
     });
+
 </script>>

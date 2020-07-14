@@ -72,7 +72,9 @@ class OrderDetailController extends Controller
      */
     public function update(Request $request, OrderDetail $orderDetail)
     {
-        //
+        $orderDetail->status = OrderDetail::STATUS_ACCEPTED;
+        $orderDetail->save();
+        return Redirect::to('admin/orders');
     }
 
     /**
