@@ -37,13 +37,13 @@
                                 <td>{{$orderDetail->delivery_address}}</td>
                                 <td>¥{{$orderDetail->total_price}}</td>
                                 @if($orderDetail->status==\App\OrderDetail::STATUS_PENDING)
-                                    <p class="warning">Pending</p>
+                                    <td><p style="color: orange">Pending</p></td>
                                 @elseif($orderDetail->status==\App\OrderDetail::STATUS_CANCELLED)
-                                    <p class="danger">Cancelled</p>
+                                    <td><p style="color: red">Cancelled</p></td>
                                 @elseif($orderDetail->status==\App\OrderDetail::STATUS_ACCEPTED)
-                                    <p class="success">Accepted</p>
+                                    <td><p style="color: green">Accepted</p></td>
                                 @else
-                                    <p>N/A</p>
+                                    <td><p>N/A</p></td>
                                 @endif
                                 <td>{{$orderDetail->created_at}}</td>
                                 <td>
