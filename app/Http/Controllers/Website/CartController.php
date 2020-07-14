@@ -20,8 +20,10 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $items = array_reverse($request->session()->get(Product::CART_SESSION));
+    {   $items = [];
+        if($request->session()->has(Product::CART_SESSION)){
+            $items = array_reverse($request->session()->get(Product::CART_SESSION));
+        }
         return view('cart', compact('items'));
     }
 
