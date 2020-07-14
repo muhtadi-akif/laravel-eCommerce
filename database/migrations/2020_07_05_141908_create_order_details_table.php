@@ -18,6 +18,7 @@ class CreateOrderDetailsTable extends Migration
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
             $table->string('delivery_address');
             $table->integer('total_price');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
