@@ -11,7 +11,16 @@
                         <div class="row">
                             <div class="col-12">
                                 <h4>
-                                    <i class="fas fa-shopping-cart"></i> Aranoz
+                                    Status:
+                                    @if($orderDetail->status==\App\OrderDetail::STATUS_PENDING)
+                                        Pending
+                                    @elseif($orderDetail->status==\App\OrderDetail::STATUS_CANCELLED)
+                                        Cancelled
+                                    @elseif($orderDetail->status==\App\OrderDetail::STATUS_ACCEPTED)
+                                        Accepted
+                                    @else
+                                        <td><p>Not Available</p></td>
+                                    @endif
                                     @php($createdAt = \Illuminate\Support\Carbon::parse($orderDetail->created_at)->format('M d Y'))
                                     <small class="float-right">Order Date: {{$createdAt}}</small>
                                 </h4>
@@ -85,16 +94,18 @@
                         <!-- /.row -->
                         <!-- /.row -->
                         <!-- this row will not appear when printing -->
-                        <div class="row no-print">
-                            <div class="col-12">
-                                <button type="button" class="btn btn-success float-right"><i
-                                        class="far fa-check-square"></i> Confirm Order
-                                </button>
-                                <button type="button" class="btn btn-danger float-right" style="margin-right: 5px;">
-                                    <i class="fas fa-window-close"></i> Cancel Order
-                                </button>
+                        @if($orderDetail->status==\App\OrderDetail::STATUS_PENDING)
+                            <div class="row no-print">
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-success float-right"><i
+                                            class="far fa-check-square"></i> Confirm Order
+                                    </button>
+                                    <button type="button" class="btn btn-danger float-right" style="margin-right: 5px;">
+                                        <i class="fas fa-window-close"></i> Cancel Order
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
                 <!-- /.row -->
