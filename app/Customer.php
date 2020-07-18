@@ -13,7 +13,7 @@ class Customer extends Model
     }
 
     public function orderDetails(){
-        return $this->hasMany(OrderDetail::class);
+        return $this->hasMany(OrderDetail::class)->latest();
     }
 
     public function posts(){
