@@ -20,6 +20,7 @@
     <link rel="stylesheet" href={{asset('css/themify-icons.css')}}>
     <!-- font awesome CSS -->
     <link rel="stylesheet" href={{asset('css/magnific-popup.css')}}>
+    <link rel="stylesheet" href={{asset('css/nice-select.css')}}>
     <!-- swiper CSS -->
     <link rel="stylesheet" href={{asset('css/slick.css')}}>
     <!-- style CSS -->

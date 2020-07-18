@@ -53,11 +53,11 @@
                     @if($user = Cartalyst\Sentinel\Laravel\Facades\Sentinel::check())
                         @if(!$user->hasAccess([App\User::ADMIN_PERMISSION]))
                             <aside class="single_sidebar_widget search_widget">
-                                <form action="#">
+                                <a href="/posts/create">
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1"
-                                            type="submit">Add a post
+                                            type="button">Add a post
                                     </button>
-                                </form>
+                                </a>
                             </aside>
                         @endif
                     @endif
