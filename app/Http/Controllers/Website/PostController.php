@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('blog/index');
+        $categories = Category::where('type', Category::TYPE_POST)->latest()->take(6)->get();
+        return view('blog/index', compact('categories'));
     }
 
     /**
