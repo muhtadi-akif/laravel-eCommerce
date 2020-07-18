@@ -49,7 +49,8 @@
                                     <div class="serial">Qty</div>
                                     <div class="country">Product</div>
                                     <div class="visit">Price</div>
-                                    <div class="percentage">Status</div>
+                                    <div class="visit">Total Price</div>
+                                    <div class="visit">Status</div>
                                 </div>
                                 @foreach($customer->orderDetails as $orderDetail)
                                     @foreach($orderDetail->orders as $order)
@@ -58,6 +59,7 @@
                                             <div class="country">{{$order->product->title}}
                                             </div>
                                             <div class="visit">¥{{$order->price}}</div>
+                                            <div class="visit">¥{{$order->quantity*$order->price}}</div>
                                             <div>
                                                 @if($orderDetail->status==\App\OrderDetail::STATUS_PENDING)
                                                     <p style="color: orange">Pending</p>
