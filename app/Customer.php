@@ -15,4 +15,8 @@ class Customer extends Model
     public function orderDetails(){
         return $this->hasMany(OrderDetail::class);
     }
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 }
