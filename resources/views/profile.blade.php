@@ -1,5 +1,5 @@
 @include('header')
-@include('logout')
+@include('profileHandle')
 <style>
     .buttons_padding_top {
         padding-top: 40px;
@@ -90,8 +90,14 @@
                                             <h2>{{$post->title}}</h2>
                                             <p>{{$post->content}}</p>
                                             <ul class="blog-info-link">
-                                                <li><a href="#"><i class="ti-pencil"></i>Edit</a></li>
-                                                <li><a href="#"><i class="ti-trash"></i>Delete</a></li>
+                                                <li><a type="button"><i class="ti-pencil"></i>Edit</a></li>
+                                                <li>
+                                                    <a type="button" id="post-delete" data-toggle="modal"
+                                                            data-id="{{$post->id}}"
+                                                            data-target="#modal-post-delete">
+                                                        <i class="ti-trash"></i>Delete
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </article>
@@ -104,5 +110,12 @@
         </div>
     </div>
 </section>
-
 @include('footer')
+<script type="text/javascript">
+    $(function () {
+        $("#post-delete").click(function () {
+            const id = $(this).data('id');
+            $('#delete_form').attr('action', '/posts/' + id);
+        })
+    });
+</script>>

@@ -120,6 +120,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $customer_id = $post->customer->id;
+        $post->delete();
+        return Redirect::to('/customers/' . $customer_id);
     }
 }
