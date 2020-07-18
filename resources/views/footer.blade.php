@@ -1,6 +1,8 @@
 <!-- jquery plugins here-->
 <!-- jquery -->
 <script src={{asset('js/jquery-1.12.1.min.js')}}></script>
+<!-- jQuery -->
+<script src="{{asset('res/admin/plugins/jquery/jquery.min.js')}}"></script>
 <!-- popper js -->
 <script src={{asset('js/popper.min.js')}}></script>
 <!-- bootstrap js -->
