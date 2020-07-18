@@ -15,12 +15,11 @@
                                 </a>
                             </div>
                             <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h2>{{$post->title}}</h2>
-                                </a>
+                                <h2>{{$post->title}}</h2>
                                 <p>{{$post->content}}</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="#"><i class="ti-user"></i> {{$post->category->name}}</a></li>
+                                    <li><a href="#"><i class="ti-user"></i>{{$post->customer->user->first_name}} {{$post->customer->user->last_name}}</a></li>
+                                    <li><a href="#"> {{$post->category->name}}</a></li>
                                 </ul>
                             </div>
                         </article>
