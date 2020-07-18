@@ -44,8 +44,37 @@
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                            <p>Orders</p>
+                            <div class="progress-table" style="width: 100%">
+                                <div class="table-head">
+                                    <div class="serial">Qty</div>
+                                    <div class="country">Product</div>
+                                    <div class="visit">Price</div>
+                                    <div class="percentage">Status</div>
+                                </div>
+                                @foreach($customer->orderDetails as $orderDetail)
+                                    @foreach($orderDetail->orders as $order)
+                                        <div class="table-row">
+                                            <div class="serial">{{$order->quantity}}</div>
+                                            <div class="country">{{$order->product->title}}
+                                            </div>
+                                            <div class="visit">¥{{$order->price}}</div>
+                                            <div>
+                                                @if($orderDetail->status==\App\OrderDetail::STATUS_PENDING)
+                                                    <p style="color: orange">Pending</p>
+                                                @elseif($orderDetail->status==\App\OrderDetail::STATUS_CANCELLED)
+                                                    <p style="color: red">Cancelled</p>
+                                                @elseif($orderDetail->status==\App\OrderDetail::STATUS_ACCEPTED)
+                                                    <p style="color: green">Accepted</p>
+                                                @else
+                                                    <p>N/A</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endforeach
+                            </div>
                         </div>
+
                         <div class="tab-pane fade show" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                             @foreach($customer->posts as $post)
                                 <div class="col-lg-8 mb-5 mb-lg-0">
