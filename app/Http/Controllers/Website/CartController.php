@@ -20,8 +20,9 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   $items = [];
-        if($request->session()->has(Product::CART_SESSION)){
+    {
+        $items = [];
+        if ($request->session()->has(Product::CART_SESSION)) {
             $items = array_reverse($request->session()->get(Product::CART_SESSION));
         }
         return view('cart', compact('items'));
@@ -70,7 +71,7 @@ class CartController extends Controller
         $order_detail->total_price = $total;
         $order_detail->save();
         $request->session()->forget(Product::CART_SESSION);
-        return Redirect::to('/')->with(User::SUCCESS_MESSAGE, "You have successfully completed your order.");
+        return Redirect::to('/customers/' . $user->customer->id)->with(User::SUCCESS_MESSAGE, "You have successfully completed your order.");
 
     }
 
