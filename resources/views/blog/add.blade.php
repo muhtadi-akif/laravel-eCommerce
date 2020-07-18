@@ -9,12 +9,11 @@
                         <div class="input-group-icon mt-10">
                             <div class="icon"><i class="ti-menu" aria-hidden="true"></i></div>
                             <div class="form-select" id="default-select">
-                                <select>
-                                    <option value=" 1">Category</option>
-                                    <option value="1">Dhaka</option>
-                                    <option value="1">Dilli</option>
-                                    <option value="1">Newyork</option>
-                                    <option value="1">Islamabad</option>
+                                <select name="category">
+                                    <option value="0">Category</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

@@ -27,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('blog/add');
+        $categories = Category::where('type',Category::TYPE_POST)->get();
+        return view('blog/add', compact('categories'));
     }
 
     /**
