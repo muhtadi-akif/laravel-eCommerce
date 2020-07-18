@@ -58,7 +58,7 @@
                                 <a class="nav-link" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Blog</a>
+                                <a class="nav-link" href="/posts">Blog</a>
                             </li>
                             <li class="nav-item">
                                 @if($user = Cartalyst\Sentinel\Laravel\Facades\Sentinel::check())
