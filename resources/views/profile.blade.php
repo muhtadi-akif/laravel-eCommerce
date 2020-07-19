@@ -92,9 +92,9 @@
                                             <h2>{{$post->title}}</h2>
                                             <p>{{$post->content}}</p>
                                             <ul class="blog-info-link">
-                                                <li><a type="button"><i class="ti-pencil"></i>Edit</a></li>
+                                                <li><a  href="/posts/{{$post->id}}/edit"><i class="ti-pencil"></i>Edit</a></li>
                                                 <li>
-                                                    <a type="button" id="post-delete" data-toggle="modal"
+                                                    <a href="" id="post-delete" data-toggle="modal"
                                                             data-id="{{$post->id}}"
                                                             data-target="#modal-post-delete">
                                                         <i class="ti-trash"></i>Delete

@@ -97,7 +97,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::where('type', Category::TYPE_POST)->get();
+        return view('blog/edit', compact('post', 'categories'));
     }
 
     /**
