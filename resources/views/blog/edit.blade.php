@@ -37,8 +37,7 @@
                         </div>
                         <div class="mt-10 mb-5">
                             <input type="file"
-                                   class="single-input py-2" id="customFile" accept="image/*" name="post_image"
-                                   required>
+                                   class="single-input py-2" id="customFile" accept="image/*" name="post_image">
                             <label class="mt-10" for="customFile">{{ old('post_image',$post->image_url) }}</label>
                         </div>
 
