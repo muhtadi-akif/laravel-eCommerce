@@ -110,7 +110,28 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post_image = $request->file('post_image');
+        $title = $request->input('title');
+        $content = $request->input('content');
+        $slug = str_slug($title, '-');
+        $category_id = $request->input('category');
+
+        $post->title = $title;
+        $post->slug = $slug;
+        $post->content = $content;
+        $post->category_id = $category_id;
+        if ($post_image) {
+            request()->validate([
+                'post_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+            $imageName = $slug . '-' . time() . '.' . $post_image->getClientOriginalExtension();
+            $image_url = $this->getImageUploadRoute() . $imageName;
+            $post->image_url = $image_url;
+            $post_image->move(public_path($this->getImageUploadRoute()), $imageName);
+        }
+        $post->save();
+        return Redirect::to('/customers/'.$post->customer->id);
+
     }
 
     /**
