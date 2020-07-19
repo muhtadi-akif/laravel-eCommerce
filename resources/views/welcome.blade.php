@@ -1,4 +1,9 @@
 @include('header')
+<style>
+    .page-item.active .page-link {
+        background-color: #ff3368;
+    }
+</style>
 <!--================Category Product Area =================-->
 <section class="cat_product_area section_padding">
     <div class="container">
@@ -51,7 +56,7 @@
                             <div class="single_product_menu d-flex">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="search"
-                                        aria-describedby="inputGroupPrepend">
+                                           aria-describedby="inputGroupPrepend">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroupPrepend"><i
                                                 class="ti-search"></i></span>
@@ -80,22 +85,7 @@
                         <div class="pageination">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <i class="ti-angle-double-left"></i>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <i class="ti-angle-double-right"></i>
-                                        </a>
-                                    </li>
+                                    <li class="page-item">{{$products->links()}}</li>
                                 </ul>
                             </nav>
                         </div>

@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
 
 
-        $products = Product::all();
+        $products = Product::latest()->paginate(1);
         $categories = Category::where('type', Category::TYPE_PRODUCT)->latest()->take(7)->get();
         $brands = Brand::latest()->take(7)->get();
         return view('welcome', compact('products', 'categories', 'brands'));
