@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->paginate(1);
+        $posts = Post::latest()->paginate(5);
         $categories = Category::where('type', Category::TYPE_POST)->latest()->take(6)->get();
         return view('blog/index', compact('categories', 'posts'));
     }
