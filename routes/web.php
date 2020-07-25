@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Redirect;
 Route::get('/', 'Website\ProductController@index');
 Route::resource('products', 'Website\ProductController')->only('show');
 Route::post('/customers/login', 'Website\CustomerController@login');
+Route::get('/customers/login/facebook', 'Website\CustomerController@facebookRedirect');
+Route::get('/fb_callback', 'Website\CustomerController@facebookCallback');
 Route::get('/customers/logout', 'Website\CustomerController@logout');
 Route::resource('customers', 'Website\CustomerController');
 Route::resource('posts', 'Website\PostController');

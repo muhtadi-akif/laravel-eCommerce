@@ -9,18 +9,43 @@
                         <h3>Sign up</h3>
                         <form class="row contact_form" action="/customers" method="post" novalidate="novalidate">
                             {{ csrf_field() }}
-                            <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="name" name="first_name" value="{{ old('first_name') }}"
-                                       placeholder="First Name">
-                            </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="name" name="last_name" value="{{ old('last_name') }}"
-                                       placeholder="Last Name">
-                            </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="name" name="email" value="{{ old('email') }}"
-                                       placeholder="E-mail">
-                            </div>
+                            @if($providerUser)
+                                <input type="hidden" name="avatar" value="{{ old('avatar',$providerUser->avatar) }}">
+                                <input type="hidden" name="provider_user_id"
+                                       value="{{ old('provider_user_id',$providerUser->id) }}">
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="first_name"
+                                           value="{{ old('first_name',$providerUser->first_name)}}"
+                                           placeholder="First Name">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="last_name"
+                                           value="{{ old('last_name',$providerUser->last_name)}}"
+                                           placeholder="Last Name">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="email"
+                                           value="{{ old('email',$providerUser->email) }}"
+                                           placeholder="E-mail">
+                                </div>
+                            @else
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="first_name"
+                                           value="{{ old('first_name')}}"
+                                           placeholder="First Name">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="last_name"
+                                           value="{{ old('last_name')}}"
+                                           placeholder="Last Name">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="email"
+                                           value="{{ old('email') }}"
+                                           placeholder="E-mail">
+                                </div>
+                            @endif
+
                             <div class="col-md-12 form-group p_star">
                                 <input type="tel" class="form-control" id="name" name="phone" value="{{ old('phone') }}"
                                        placeholder="Phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">

@@ -32,6 +32,9 @@
                                     <button type="submit" value="submit" class="btn_3">
                                         log in
                                     </button>
+                                    <a type="button" href="/customers/login/facebook" class="btn_3" style="background-color: #3b5998; text-align: center">
+                                        Continue with Facebook
+                                    </a>
                                 </div>
                             </form>
                         </div>

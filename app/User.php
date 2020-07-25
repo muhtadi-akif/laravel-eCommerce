@@ -18,4 +18,9 @@ class User extends EloquentUser
     {
         return $this->hasOne(Customer::class);
     }
+
+    public function facebookAccount()
+    {
+        return $this->hasOne(SocialFacebookAccount::class);
+    }
 }
