@@ -33,7 +33,7 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         $providerUser = session(SocialFacebookAccount::PROVIDER_SESSION, null);
         \session()->forget(SocialFacebookAccount::PROVIDER_SESSION);
@@ -193,6 +193,7 @@ class CustomerController extends Controller
             ->first();
         if ($account) {
             $this->autoLogin($account);
+            return Redirect::to('customers/'.$account->user->customer->id);
         } else {
             $splitName = explode(' ', $providerUser->name, 2); // Restricts it to only 2 values, for names like Billy Bob Jones
             $first_name = $splitName[0];
@@ -211,7 +212,6 @@ class CustomerController extends Controller
         } else {
             Sentinel::logout();
             Sentinel::login($user);
-            return Redirect::to('/');
         }
     }
 }
